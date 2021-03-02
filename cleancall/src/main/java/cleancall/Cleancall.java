@@ -27,9 +27,9 @@ public class Cleancall {
 	
     @PostPersist
     public void onPostPersist(){
-//        Cleancalled Cleancalled = new Cleancalled();
-//        BeanUtils.copyProperties(this, Cleancalled);
-//        Cleancalled.publishAfterCommit();
+        Cleancalled Cleancalled = new Cleancalled();
+        BeanUtils.copyProperties(this, Cleancalled);
+        Cleancalled.publishAfterCommit();
     	
     	System.out.println("휴대폰번호 " + getTel());
         System.out.println("호출위치 " + get호출위치());
