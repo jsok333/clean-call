@@ -34,7 +34,7 @@ public class CleancallPolicyHandler {
 			// Correlation id 는 '고객휴대폰번호' 임
 			if(할당확인됨.getId() != null)
 				택시호출Repository.findById(Long.valueOf(할당확인됨.getId())).ifPresent((택시호출) -> {
-					택시호출.set호출상태("호출확정");
+					택시호출.setStatus("호출확정");
 					택시호출Repository.save(택시호출);
 				});
 //			CleancallRepository.findBy휴대폰번호(CleanassignCompleted.get고객휴대폰번호()).ifPresent((Cleancall) -> {
@@ -59,7 +59,7 @@ public class CleancallPolicyHandler {
 		if (할당취소됨.isMe()) {
 			System.out.println("##### listener[CleanassignCancelled]  : " + 할당취소됨.toJson());
 			택시호출Repository.findById(Long.valueOf(할당취소됨.getId())).ifPresent((택시호출) -> {
-				택시호출.set호출상태("호출취소");
+				택시호출.setStatus("호출취소");
 				택시호출Repository.save(택시호출);
 			});
 		}

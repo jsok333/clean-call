@@ -19,9 +19,9 @@ public class Cleancall {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String 휴대폰번호;
+    private String tel;
     private String 호출위치;
-    private String 호출상태; //호출,호출중,호출확정,호출취소
+    private String status; //호출,호출중,호출확정,호출취소
     private Integer 예상요금;
     
 	
@@ -31,23 +31,23 @@ public class Cleancall {
 //        BeanUtils.copyProperties(this, Cleancalled);
 //        Cleancalled.publishAfterCommit();
     	
-    	System.out.println("휴대폰번호 " + get휴대폰번호());
+    	System.out.println("휴대폰번호 " + getTel());
         System.out.println("호출위치 " + get호출위치());
-        System.out.println("호출상태 " + get호출상태());
+        System.out.println("호출상태 " + getStatus());
         System.out.println("예상요금 " + get예상요금());
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.   	
-    	if(get휴대폰번호() != null)
+    	if(getTel() != null)
 		{
     		System.out.println("SEND###############################" + getId());
 			Cleanmanage cleanmanage = new Cleanmanage();
 			cleanmanage.setId(getId());
 			cleanmanage.setOrderId(String.valueOf(getId()));
-			cleanmanage.set고객휴대폰번호(get휴대폰번호());
+			cleanmanage.set고객휴대폰번호(getTel());
 	        if(get호출위치()!=null)
 				cleanmanage.set호출위치(get호출위치());
-	        if(get호출상태()!=null)
-				cleanmanage.set호출상태(get호출상태());
+	        if(getStatus()!=null)
+				cleanmanage.set호출상태(getStatus());
 	        if(get예상요금()!=null)
 				cleanmanage.set예상요금(get예상요금());
 	        
@@ -87,13 +87,13 @@ public class Cleancall {
     }
 
 
-	public String get휴대폰번호() {
-		return 휴대폰번호;
+	public String getTel() {
+		return tel;
 	}
 
 
-	public void set휴대폰번호(String 휴대폰번호) {
-		this.휴대폰번호 = 휴대폰번호;
+	public void setTel( String tel ) {
+		this.tel = tel;
 	}
 
 
@@ -107,13 +107,13 @@ public class Cleancall {
 	}
 
 
-	public String get호출상태() {
-		return 호출상태;
+	public String getStatus() {
+		return status;
 	}
 
 
-	public void set호출상태(String 호출상태) {
-		this.호출상태 = 호출상태;
+	public void setStatus( String status ) {
+		this.status = status;
 	}
 
 
