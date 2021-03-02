@@ -24,7 +24,7 @@ public class CleanassignPolicyHandler {
         if(택시할당요청됨.isMe()){
             System.out.println("##### listener  : " + 택시할당요청됨.toJson());
             
-            if(택시할당요청됨.get호출상태() != null  && 택시할당요청됨.get호출상태().equals("호출중"))
+            if(택시할당요청됨.get호출상태() != null  && 택시할당요청됨.get호출상태().equals("called"))
             {
             	
             	택시할당요청됨.set호출상태("호출확정");
