@@ -20,9 +20,9 @@ public class Cleancall {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String tel;
-    private String 호출위치;
+    private String addr;
     private String status; //호출,호출중,호출확정,호출취소
-    private Integer 예상요금;
+    private Integer price;
     
 	
     @PostPersist
@@ -32,9 +32,9 @@ public class Cleancall {
         Cleancalled.publishAfterCommit();
     	
     	System.out.println("휴대폰번호 " + getTel());
-        System.out.println("호출위치 " + get호출위치());
+        System.out.println("addr " + getAddr());
         System.out.println("호출상태 " + getStatus());
-        System.out.println("예상요금 " + get예상요금());
+        System.out.println("price " + getPrice());
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.   	
     	if(getTel() != null)
@@ -44,12 +44,12 @@ public class Cleancall {
 			cleanmanage.setId(getId());
 			cleanmanage.setOrderId(String.valueOf(getId()));
 			cleanmanage.set고객휴대폰번호(getTel());
-	        if(get호출위치()!=null)
-				cleanmanage.set호출위치(get호출위치());
+	        if(getAddr()!=null)
+				cleanmanage.set호출위치(getAddr());
 	        if(getStatus()!=null)
 				cleanmanage.set호출상태(getStatus());
-	        if(get예상요금()!=null)
-				cleanmanage.set예상요금(get예상요금());
+	        if(getPrice()!=null)
+				cleanmanage.set예상요금(getPrice());
 	        
 	        // mappings goes here
 	        CleancalllApplication.applicationContext.getBean(CleanmanageService.class).cleanManageCall(cleanmanage);
@@ -97,13 +97,13 @@ public class Cleancall {
 	}
 
 
-	public String get호출위치() {
-		return 호출위치;
+	public String getAddr() {
+		return addr;
 	}
 
 
-	public void set호출위치(String 호출위치) {
-		this.호출위치 = 호출위치;
+	public void setAddr( String addr ) {
+		this.addr = addr;
 	}
 
 
@@ -117,13 +117,13 @@ public class Cleancall {
 	}
 
 
-	public Integer get예상요금() {
-		return 예상요금;
+	public Integer getPrice() {
+		return price;
 	}
 
 
-	public void set예상요금(Integer 예상요금) {
-		this.예상요금 = 예상요금;
+	public void setPrice( Integer price ) {
+		this.price = price;
 	}
 
 
